@@ -27,6 +27,8 @@
         // override for custom implementation
         protected override bool ValidateUser(string userName, string password)
         {
+            GenerateTimeEntryData.GenerateDataIfRequired();
+
             var timeEntryUser = _context.TimeEntryUsers.FirstOrDefault(u => u.UserName == userName);
 
             if (timeEntryUser == null)

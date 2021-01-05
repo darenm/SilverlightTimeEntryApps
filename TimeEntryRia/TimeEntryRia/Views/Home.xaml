@@ -8,18 +8,40 @@
   Style="{StaticResource PageStyle}">
 
   <Grid x:Name="LayoutRoot">
-    <ScrollViewer x:Name="PageScrollViewer" Style="{StaticResource PageScrollViewerStyle}" >
-
-      <StackPanel x:Name="ContentStackPanel" Style="{StaticResource ContentStackPanelStyle}">
 
         <TextBlock x:Name="HeaderText" Style="{StaticResource HeaderTextStyle}" 
                            Text="{Binding Path=ApplicationStrings.HomePageTitle, Source={StaticResource ResourceWrapper}}"/>
-        <TextBlock x:Name="ContentText" Style="{StaticResource ContentTextStyle}" 
-                           Text="Home page content"/>
+        <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Rectangle Style="{StaticResource ContentPanelBackground}" />
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="48">
+                <HyperlinkButton Margin="12" NavigateUri="/TimeEntryPage">
+                    <Grid>
+                        <Rectangle Style="{StaticResource HomeNavButtonsBackground}"/>
+                        <Image Source="../Assets/Images/icons8-watch-50.png" Stretch="None" />
+                        <TextBlock Style="{StaticResource HomeNavButtonsText}" 
+                               Text="Time Entries" />
+                    </Grid>
+                </HyperlinkButton>
+                <HyperlinkButton Margin="12" NavigateUri="/ReportsPage">
+                    <Grid>
+                        <Rectangle Style="{StaticResource HomeNavButtonsBackground}"/>
+                        <Image Source="../Assets/Images/icons8-doughnut-chart-50.png" Stretch="None" />
+                        <TextBlock Style="{StaticResource HomeNavButtonsText}"
+                               Text="Reports" />
+                    </Grid>
+                </HyperlinkButton>
+                <HyperlinkButton Margin="12" NavigateUri="/AdminPage">
+                    <Grid>
+                        <Rectangle Style="{StaticResource HomeNavButtonsBackground}"/>
+                        <Image Source="../Assets/Images/icons8-control-panel-50.png" Stretch="None" />
+                        <TextBlock Style="{StaticResource HomeNavButtonsText}" 
+                               Text="Admin" />
+                    </Grid>
+                </HyperlinkButton>
+            </StackPanel>
 
-      </StackPanel>
+        </Grid>
 
-    </ScrollViewer>
-  </Grid>
+    </Grid>
 
 </navigation:Page>

@@ -317,7 +317,7 @@
     <!-- Login Container Style -->
     <Style x:Key="LoginContainerStyle" TargetType="Border">
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="Margin" Value="0,0,390,0"/>
+        <Setter Property="Margin" Value="0,12,390,0"/>
         <Setter Property="Height" Value="45"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="BorderBrush" Value="#FFFFFFFF"/>
@@ -1753,5 +1753,28 @@
                 </Style>
             </Setter.Value>
         </Setter>
+    </Style>
+    
+    <!-- Custom Styles for TimeEntryRia -->
+    
+    <SolidColorBrush x:Key="ContentPanelBackgroundBrush" Color="#FFEEEEEE"/>
+
+    <Style x:Key="ContentPanelBackground" TargetType="Rectangle">
+        <Setter Property="RadiusX" Value="8"/>
+        <Setter Property="RadiusY" Value="8"/>
+        <Setter Property="Fill" Value="{StaticResource ContentPanelBackgroundBrush}"/>
+    </Style>
+    
+    <Style x:Key="HomeNavButtonsText" TargetType="TextBlock">
+        <Setter Property="VerticalAlignment" Value="Bottom"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+    
+    <Style x:Key="HomeNavButtonsBackground" TargetType="Rectangle">
+        <Setter Property="Width" Value="100"/>
+        <Setter Property="Height" Value="100"/>
+        <Setter Property="Fill" Value="{StaticResource HighLightColorBrush}"/>
+
     </Style>
 </ResourceDictionary>

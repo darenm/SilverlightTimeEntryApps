@@ -124,7 +124,7 @@
     <value>Already registered?</value>
   </data>
   <data name="ApplicationName" xml:space="preserve">
-    <value>Application Name</value>
+    <value>Time Entry RIA</value>
   </data>
   <data name="BackToLoginButton" xml:space="preserve">
     <value>Back to Login</value>
@@ -177,5 +177,14 @@
   <data name="WelcomeMessage" xml:space="preserve">
     <value>Welcome {0}</value>
     <comment>{0} = User.DisplayName property</comment>
+  </data>
+  <data name="AdminPageTitle" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="ReportsPageTitle" xml:space="preserve">
+    <value>Reports</value>
+  </data>
+  <data name="TimeEntryPageTitle" xml:space="preserve">
+    <value>Time Entry</value>
   </data>
 </root>

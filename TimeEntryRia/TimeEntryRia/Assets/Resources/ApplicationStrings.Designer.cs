@@ -70,6 +70,15 @@ namespace TimeEntryRia {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Admin.
+        /// </summary>
+        public static string AdminPageTitle {
+            get {
+                return ResourceManager.GetString("AdminPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Already registered?.
         /// </summary>
         public static string AlreadyRegisteredLabel {
@@ -79,7 +88,7 @@ namespace TimeEntryRia {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Application Name.
+        ///   Looks up a localized string similar to Time Entry RIA.
         /// </summary>
         public static string ApplicationName {
             get {
@@ -219,6 +228,24 @@ namespace TimeEntryRia {
         public static string RememberMeLabel {
             get {
                 return ResourceManager.GetString("RememberMeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reports.
+        /// </summary>
+        public static string ReportsPageTitle {
+            get {
+                return ResourceManager.GetString("ReportsPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time Entry.
+        /// </summary>
+        public static string TimeEntryPageTitle {
+            get {
+                return ResourceManager.GetString("TimeEntryPageTitle", resourceCulture);
             }
         }
         

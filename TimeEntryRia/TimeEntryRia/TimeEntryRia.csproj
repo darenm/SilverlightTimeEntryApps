@@ -148,6 +148,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SecurityQuestions.resx</DependentUpon>
     </Compile>
+    <Compile Include="Views\AdminPage.xaml.cs">
+      <DependentUpon>AdminPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ErrorWindow.xaml.cs">
       <DependentUpon>ErrorWindow.xaml</DependentUpon>
     </Compile>
@@ -172,6 +175,12 @@
     </Compile>
     <Compile Include="Views\Login\RegistrationForm.xaml.cs">
       <DependentUpon>RegistrationForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ReportsPage.xaml.cs">
+      <DependentUpon>ReportsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TimeEntryPage.xaml.cs">
+      <DependentUpon>TimeEntryPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -208,6 +217,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\AdminPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ErrorWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:MarkupCompilePass1</Generator>
@@ -239,6 +252,14 @@
     <Page Include="Views\Login\RegistrationForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </Page>
+    <Page Include="Views\ReportsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TimeEntryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -276,6 +297,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\OutOfBrowserSettings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\icons8-add-user-male-50.png" />
+    <Resource Include="Assets\Images\icons8-calendar-12-50.png" />
+    <Resource Include="Assets\Images\icons8-change-user-50.png" />
+    <Resource Include="Assets\Images\icons8-customer-50.png" />
+    <Resource Include="Assets\Images\icons8-date-from-50.png" />
+    <Resource Include="Assets\Images\icons8-date-to-50.png" />
+    <Resource Include="Assets\Images\icons8-delete-50.png" />
+    <Resource Include="Assets\Images\icons8-denied-50.png" />
+    <Resource Include="Assets\Images\icons8-doughnut-chart-50.png" />
+    <Resource Include="Assets\Images\icons8-pie-chart-50.png" />
+    <Resource Include="Assets\Images\icons8-plus-math-50.png" />
+    <Resource Include="Assets\Images\icons8-registration-50.png" />
+    <Resource Include="Assets\Images\icons8-timeline-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\icons8-control-panel-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\icons8-watch-50.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

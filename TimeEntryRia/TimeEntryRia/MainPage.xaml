@@ -43,17 +43,32 @@
             <HyperlinkButton x:Name="Link1" Style="{StaticResource LinkStyle}" 
                                      NavigateUri="/Home" TargetName="ContentFrame" Content="{Binding Path=ApplicationStrings.HomePageTitle, Source={StaticResource ResourceWrapper}}"/>
 
-            <Rectangle x:Name="Divider1" Style="{StaticResource DividerStyle}"/>
+                        <Rectangle Style="{StaticResource DividerStyle}"/>
 
-            <HyperlinkButton x:Name="Link2" Style="{StaticResource LinkStyle}" 
+                        <HyperlinkButton x:Name="Link2" Style="{StaticResource LinkStyle}" 
+                                     NavigateUri="/TimeEntryPage" TargetName="ContentFrame" Content="{Binding Path=ApplicationStrings.TimeEntryPageTitle, Source={StaticResource ResourceWrapper}}"/>
+
+                        <Rectangle  Style="{StaticResource DividerStyle}"/>
+
+                        <HyperlinkButton x:Name="Link3" Style="{StaticResource LinkStyle}" 
+                                     NavigateUri="/ReportsPage" TargetName="ContentFrame" Content="{Binding Path=ApplicationStrings.ReportsPageTitle, Source={StaticResource ResourceWrapper}}"/>
+
+                        <Rectangle  Style="{StaticResource DividerStyle}"/>
+
+                        <HyperlinkButton x:Name="Link4" Style="{StaticResource LinkStyle}" 
+                                     NavigateUri="/AdminPage" TargetName="ContentFrame" Content="{Binding Path=ApplicationStrings.AdminPageTitle, Source={StaticResource ResourceWrapper}}"/>
+
+                        <Rectangle  Style="{StaticResource DividerStyle}"/>
+
+                        <HyperlinkButton x:Name="Link5" Style="{StaticResource LinkStyle}" 
                                      NavigateUri="/About" TargetName="ContentFrame" Content="{Binding Path=ApplicationStrings.AboutPageTitle, Source={StaticResource ResourceWrapper}}"/>
 
-          </StackPanel>
+                    </StackPanel>
         </Border>
 
       </Grid>
 
-      <Border x:Name="loginContainer" Style="{StaticResource LoginContainerStyle}">
+      <Border x:Name="loginContainer" Style="{StaticResource LoginContainerStyle}" Padding="8">
           <!-- LoginStatus will be added here in code behind. This is required for the designer view to work -->           
       </Border>
     </Grid>
