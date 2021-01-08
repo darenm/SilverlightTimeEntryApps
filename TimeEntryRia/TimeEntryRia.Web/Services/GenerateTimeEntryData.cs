@@ -25,11 +25,14 @@ namespace TimeEntryRia.Web
                 Year = DateTime.Now.Year
             };
 
-            if (weekOfYear.Week == 1)
+            var firstDayOfCurrentWeek = TimeEntry.GetIso8601FirstDateOfWeek(weekOfYear.Year, weekOfYear.Week);
+            var previousWeekStart = firstDayOfCurrentWeek - TimeSpan.FromDays(7);
+
+            weekOfYear = new WeekOfYear()
             {
-                weekOfYear.Week = 52;
-                weekOfYear.Year--;
-            }
+                Week = TimeEntry.GetIso8601WeekOfYear(previousWeekStart),
+                Year = previousWeekStart.Year
+            };
 
             using (var instance = new GenerateTimeEntryData())
             {
@@ -66,45 +69,57 @@ namespace TimeEntryRia.Web
         {
             var projects = _context.Projects.ToList();
             var users = _context.TimeEntryUsers.ToList();
+            var weekDate = TimeEntry.GetIso8601FirstDateOfWeek(weekOfYear.Year, weekOfYear.Week);
 
-            // otherwise start to generate data
-            for (int year = weekOfYear.Year; year > DateTime.Now.Year - 2; year--)
+            for (int week = 0; week < 104; week++)
             {
-                for (int week = 52; week > 1; week--)
+                if (weekDate >= DateTime.Now)
                 {
-                    var weekDate = TimeEntry.GetIso8601FirstDateOfWeek(year, week).Date;
-                    if ( weekDate >= DateTime.Now)
+                    weekDate -= TimeSpan.FromDays(7);
+                    // don't enter future data
+                    continue;
+                }
+
+                foreach (var user in users)
+                {
+                    var userProjects = new List<Project>();
+                    for (int i = 0; i < _random.Next(3) + 1; i++)
                     {
-                        // don't enter future data
-                        continue;
+                        userProjects.Add(projects[_random.Next(projects.Count)]);
                     }
 
                     for (int day = 0; day < 5; day++)
                     {
-                        foreach (var user in users)
+                        var currentDate = weekDate + TimeSpan.FromDays(day);
+
+                        var totalTime = 0.0;
+
+                        while (totalTime < 8.0)
                         {
-                            var totalTime = 0.0;
-
-                            while (totalTime < 8.0)
+                            var time = Math.Round(_random.NextDouble() * 4.0, 1);
+                            if (totalTime + time > 8.0)
                             {
-                                var time = Math.Round(_random.NextDouble() * 8.0, 1);
-                                totalTime += time;
-                                var currentDate = weekDate + TimeSpan.FromDays(day);
-                                var project = projects[_random.Next(3)];
-                                var timeEntry = new TimeEntry()
-                                {
-                                    Date = new DateTime(currentDate.Year, currentDate.Month, currentDate.Day),
-                                    Hours = time,
-                                    Project = project,
-                                    UserId = user.Id
-                                };
-                                _context.TimeEntries.AddObject(timeEntry);
+                                time = 8.0 - totalTime;
                             }
-                        }
 
-                        _context.SaveChanges();
+                            totalTime += time;
+
+                            var project = userProjects[_random.Next(userProjects.Count)];
+                            var timeEntry = new TimeEntry()
+                            {
+                                Date = currentDate,
+                                Hours = time,
+                                Project = project,
+                                UserId = user.Id
+                            };
+                            _context.TimeEntries.AddObject(timeEntry);
+                        }
                     }
+
+                    _context.SaveChanges();
                 }
+
+                weekDate -= TimeSpan.FromDays(7);
             }
         }
 

@@ -45,6 +45,7 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.ServiceModel.DomainServices.EntityFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ServiceModel.DomainServices.Server" />
@@ -65,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClientBin\TimeEntryRia.xap" />
+    <Content Include="Services\TimesheetSummaryService.svc" />
     <Content Include="TimeEntryRiaTestPage.aspx" />
     <Content Include="TimeEntryRiaTestPage.html" />
     <Content Include="Silverlight.js" />
@@ -79,6 +81,7 @@
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Models\Shared\TimeEntry.shared.cs" />
+    <Compile Include="Models\SummaryRow.cs" />
     <Compile Include="Resources\ValidationErrorResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -96,8 +99,12 @@
     <Compile Include="Services\GenerateTimeEntryData.cs" />
     <Compile Include="Services\ProjectService.cs" />
     <Compile Include="Services\ProjectService.metadata.cs" />
+    <Compile Include="Services\SilverlightFaultBehavior.cs" />
     <Compile Include="Services\TimeEntryService.cs" />
     <Compile Include="Services\TimeEntryService.metadata.cs" />
+    <Compile Include="Services\TimesheetSummaryService.svc.cs">
+      <DependentUpon>TimesheetSummaryService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Services\UserRegistrationService.cs" />
     <Compile Include="Models\Shared\User.shared.cs" />
     <Compile Include="TimeEntryModel.Designer.cs">

@@ -131,6 +131,9 @@
       <DependentUpon>ErrorResources.resx</DependentUpon>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Helpers\BooleanConverter.cs" />
+    <Compile Include="Helpers\BooleanFontWeightConverter.cs" />
+    <Compile Include="Helpers\BooleanVisibilityConverter.cs" />
     <Compile Include="Models\LoginInfo.cs" />
     <Compile Include="Models\UserExtensions.cs" />
     <Compile Include="Models\RegistrationDataExtensions.cs" />
@@ -147,6 +150,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SecurityQuestions.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Services\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Views\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
@@ -264,6 +272,28 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
+    <None Include="Service References\Services\TimeEntryRia.Services.SummaryRow.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Services\TimesheetSummaryService.disco" />
+    <None Include="Service References\Services\configuration91.svcinfo" />
+    <None Include="Service References\Services\configuration.svcinfo" />
+    <None Include="Service References\Services\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="ServiceReferences.ClientConfig" />
+    <None Include="Service References\Services\TimesheetSummaryService.wsdl" />
+    <None Include="Service References\Services\TimesheetSummaryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Services\TimesheetSummaryService1.wsdl" />
+    <None Include="Service References\Services\TimesheetSummaryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Services\TimesheetSummaryService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Libs\System.Windows.Controls.Data.DataForm.Toolkit.dll" />
@@ -318,6 +348,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\icons8-watch-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

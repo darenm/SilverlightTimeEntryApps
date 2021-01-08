@@ -6,7 +6,16 @@
            mc:Ignorable="d"
            xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
            d:DesignWidth="640" d:DesignHeight="480"
-           Title="TimeEntryPage Page" xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit">
+           Title="TimeEntryPage Page" 
+           xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" 
+           xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
+           xmlns:converters="clr-namespace:TimeEntryRia">
+    <navigation:Page.Resources>
+        <converters:BooleanFontWeightConverter x:Key="BooleanFontWeightConverter" />
+        <converters:BooleanVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"
+                                               True="Collapsed"
+                                               False="Visible"/>
+    </navigation:Page.Resources>
     <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -22,7 +31,109 @@
                                 SelectedDateChanged="weekStartingDatePicker_SelectedDateChanged" />
                 <Button x:Name="DecreaseWeek" Content="&lt;" Margin="4,0" Click="DecreaseWeek_Click" />
                 <Button x:Name="IncreaseWeek" Content="&gt;" Margin="4,0" Click="IncreaseWeek_Click" />
+                <TextBlock x:Name="WeekOfLabel" VerticalAlignment="Center" Margin="4,0" />
             </StackPanel>
         </toolkit:HeaderedContentControl>
+
+        <sdk:DataGrid Name="WeekSummaryDataGrid" Grid.Row="2" 
+                      AutoGenerateColumns="False" 
+                      CanUserReorderColumns="False" 
+                      CanUserSortColumns="False" Margin="0,8">
+            <sdk:DataGrid.Columns>
+                <sdk:DataGridTemplateColumn IsReadOnly="True">
+                    <sdk:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Ellipse Fill="{StaticResource HighLightColorBrush}" Width="32" Stretch="UniformToFill" Margin="4"/>
+                        </DataTemplate>
+                    </sdk:DataGridTemplateColumn.CellTemplate>
+                </sdk:DataGridTemplateColumn>
+                <sdk:DataGridTextColumn Binding="{Binding Name}" IsReadOnly="True" FontWeight="Bold"/>
+                <!-- DataGridTextColumn does not support binding to FontWeight -->
+                <!--<sdk:DataGridTextColumn Binding="{Binding MonTotal}" Header="Mon" IsReadOnly="True" FontWeight="{Binding IsTotalRow, Converter={StaticResource BooleanFontWeightConverter}}"/>-->
+
+                <sdk:DataGridTemplateColumn Header="Mon" IsReadOnly="True">
+                    <sdk:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding MonTotal}" 
+                                       VerticalAlignment="Center"
+                                       FontWeight="{Binding IsTotalRow, Converter={StaticResource BooleanFontWeightConverter}}"/>
+                        </DataTemplate>
+                    </sdk:DataGridTemplateColumn.CellTemplate>
+                </sdk:DataGridTemplateColumn>
+
+                <sdk:DataGridTemplateColumn Header="Tue" IsReadOnly="True">
+                    <sdk:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding TueTotal}" 
+                                       VerticalAlignment="Center"
+                                       FontWeight="{Binding IsTotalRow, Converter={StaticResource BooleanFontWeightConverter}}"/>
+                        </DataTemplate>
+                    </sdk:DataGridTemplateColumn.CellTemplate>
+                </sdk:DataGridTemplateColumn>
+
+                <sdk:DataGridTemplateColumn Header="Wed" IsReadOnly="True">
+                    <sdk:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding WedTotal}" 
+                                       VerticalAlignment="Center"
+                                       FontWeight="{Binding IsTotalRow, Converter={StaticResource BooleanFontWeightConverter}}"/>
+                        </DataTemplate>
+                    </sdk:DataGridTemplateColumn.CellTemplate>
+                </sdk:DataGridTemplateColumn>
+
+                <sdk:DataGridTemplateColumn Header="Thu" IsReadOnly="True">
+                    <sdk:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding ThuTotal}" 
+                                       VerticalAlignment="Center"
+                                       FontWeight="{Binding IsTotalRow, Converter={StaticResource BooleanFontWeightConverter}}"/>
+                        </DataTemplate>
+                    </sdk:DataGridTemplateColumn.CellTemplate>
+                </sdk:DataGridTemplateColumn>
+
+                <sdk:DataGridTemplateColumn Header="Fri" IsReadOnly="True">
+                    <sdk:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding FriTotal}" 
+                                       VerticalAlignment="Center"
+                                       FontWeight="{Binding IsTotalRow, Converter={StaticResource BooleanFontWeightConverter}}"/>
+                        </DataTemplate>
+                    </sdk:DataGridTemplateColumn.CellTemplate>
+                </sdk:DataGridTemplateColumn>
+
+                <sdk:DataGridTemplateColumn Header="Sat" IsReadOnly="True">
+                    <sdk:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding SatTotal}" 
+                                       VerticalAlignment="Center"
+                                       FontWeight="{Binding IsTotalRow, Converter={StaticResource BooleanFontWeightConverter}}"/>
+                        </DataTemplate>
+                    </sdk:DataGridTemplateColumn.CellTemplate>
+                </sdk:DataGridTemplateColumn>
+
+                <sdk:DataGridTemplateColumn Header="Sun" IsReadOnly="True">
+                    <sdk:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding SunTotal}" 
+                                       VerticalAlignment="Center"
+                                       FontWeight="{Binding IsTotalRow, Converter={StaticResource BooleanFontWeightConverter}}"/>
+                        </DataTemplate>
+                    </sdk:DataGridTemplateColumn.CellTemplate>
+                </sdk:DataGridTemplateColumn>
+
+                <sdk:DataGridTextColumn Binding="{Binding Total}" Header="Total" IsReadOnly="True" FontWeight="Bold"/>
+                <sdk:DataGridTemplateColumn IsReadOnly="True" Header="Actions">
+                    <sdk:DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Margin="4" Visibility="{Binding IsTotalRow, Converter={StaticResource InverseBooleanToVisibilityConverter}}">Edit Week</Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </sdk:DataGridTemplateColumn.CellTemplate>
+                </sdk:DataGridTemplateColumn>
+
+            </sdk:DataGrid.Columns>
+
+        </sdk:DataGrid>
     </Grid>
 </navigation:Page>

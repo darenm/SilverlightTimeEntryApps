@@ -10,14 +10,33 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Windows.Navigation;
+using TimeEntryRia.Web;
+using TimeEntryRia.Services;
 
 namespace TimeEntryRia.Views
 {
     public partial class TimeEntryPage : Page
     {
+        TimesheetSummaryServiceClient _service;
+
         public TimeEntryPage()
         {
+
             InitializeComponent();
+            _service = new TimesheetSummaryServiceClient();
+            _service.GetWeekSummaryCompleted += new EventHandler<GetWeekSummaryCompletedEventArgs>(service_GetWeekSummaryCompleted);
+        }
+
+        void service_GetWeekSummaryCompleted(object sender, GetWeekSummaryCompletedEventArgs e)
+        {
+            if (!e.Cancelled && e.Error == null)
+            {
+                WeekSummaryDataGrid.ItemsSource = e.Result;
+            }
+            else
+            {
+                MessageBox.Show(e.Error.Message);
+            }
         }
 
         // Executes when the user navigates to this page.
@@ -33,12 +52,22 @@ namespace TimeEntryRia.Views
                 var selectedDate = (DateTime)e.AddedItems[0];
                 if (selectedDate.DayOfWeek == DayOfWeek.Monday)
                 {
+                    WeekOfLabel.Text = string.Format("Week {0} of {1}", 
+                        TimeEntry.GetIso8601WeekOfYear(selectedDate),
+                        selectedDate.Year);
+                    _service.GetWeekSummaryAsync(53, selectedDate);
+
                     return;
                 }
 
                 var dayOffset = DayOfWeek.Monday - selectedDate.DayOfWeek;
                 var newDate = selectedDate + TimeSpan.FromDays(dayOffset);
                 weekStartingDatePicker.SelectedDate = newDate;
+                WeekOfLabel.Text = string.Format("Week {0} of {1}",
+                    TimeEntry.GetIso8601WeekOfYear(newDate),
+                    selectedDate.Year);
+
+                _service.GetWeekSummaryAsync(53, newDate);
             }
         }
 
