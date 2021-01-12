@@ -155,7 +155,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="LastUpdated" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="LastUpdated" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
           <NavigationProperty Name="TimeEntries" Relationship="TimeEntryModel.FK_TimeEntry_Projects" FromRole="Projects" ToRole="TimeEntry" />
         </EntityType>
         <EntityType Name="Role">
@@ -164,7 +164,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="LastUpdated" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="LastUpdated" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
           <NavigationProperty Name="TimeEntryUsers" Relationship="TimeEntryModel.FK_Users_Roles" FromRole="Roles" ToRole="TimeEntryUsers" />
         </EntityType>
         <EntityType Name="Security">
@@ -174,7 +174,7 @@
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Salt" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="LastUpdated" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="LastUpdated" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
           <NavigationProperty Name="TimeEntryUser" Relationship="TimeEntryModel.FK_Security_TimeEntryUsers" FromRole="Security" ToRole="TimeEntryUsers" />
         </EntityType>
         <EntityType Name="TimeEntry">
@@ -186,7 +186,7 @@
           <Property Name="ProjectId" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" />
           <Property Name="Hours" Type="Double" Nullable="false" />
-          <Property Name="LastUpdated" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="LastUpdated" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
           <NavigationProperty Name="Project" Relationship="TimeEntryModel.FK_TimeEntry_Projects" FromRole="TimeEntry" ToRole="Projects" />
           <NavigationProperty Name="TimeEntryUser" Relationship="TimeEntryModel.FK_TimeEntry_TimeEntryUsers" FromRole="TimeEntry" ToRole="TimeEntryUsers" />
         </EntityType>
@@ -198,7 +198,7 @@
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="RoleId" Type="Int32" Nullable="false" />
-          <Property Name="LastUpdated" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="LastUpdated" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" ConcurrencyMode="Fixed" />
           <NavigationProperty Name="Role" Relationship="TimeEntryModel.FK_Users_Roles" FromRole="TimeEntryUsers" ToRole="Roles" />
           <NavigationProperty Name="Security" Relationship="TimeEntryModel.FK_Security_TimeEntryUsers" FromRole="TimeEntryUsers" ToRole="Security" />
           <NavigationProperty Name="TimeEntries" Relationship="TimeEntryModel.FK_TimeEntry_TimeEntryUsers" FromRole="TimeEntryUsers" ToRole="TimeEntry" />

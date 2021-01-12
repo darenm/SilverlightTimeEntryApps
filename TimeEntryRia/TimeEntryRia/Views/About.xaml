@@ -8,7 +8,7 @@
   Style="{StaticResource PageStyle}">
 
     <Grid x:Name="LayoutRoot">
-        <ScrollViewer x:Name="PageScrollViewer" Style="{StaticResource PageScrollViewerStyle}" HorizontalScrollBarVisibility="Disabled">
+        <ScrollViewer x:Name="PageScrollViewer" Style="{StaticResource PageScrollViewerStyle}">
 
             <StackPanel x:Name="ContentStackPanel" Style="{StaticResource ContentStackPanelStyle}">
 
@@ -19,16 +19,26 @@
 
                 <TextBlock x:Name="VersionInfo" Style="{StaticResource ContentTextStyle}"/>
 
-                <TextBlock x:Name="BodyContent" Style="{StaticResource ContentTextStyle}" TextWrapping="Wrap" Width="400"
+                <TextBlock x:Name="BodyContent" Style="{StaticResource ContentTextStyle}" TextWrapping="Wrap"
                            Text="A simple Silverlight application that will be used as the basis for a series of articles on migrating from Silverlight to Uno."/>
 
                 <TextBlock Style="{StaticResource ContentTextStyle}" Foreground="{StaticResource HighLightColorBrush}"
                            Text="3rd Party Resources"/>
-                
+
+
                 <StackPanel Orientation="Horizontal">
+                    <Ellipse Width="4" Height="4" Fill="Black" Margin="4"/>
                     <TextBlock Style="{StaticResource ContentTextStyle}" VerticalAlignment="Center"
                            Text="Icons from Icons8.com: " />
                     <HyperlinkButton VerticalAlignment="Center" Click="HyperlinkButton_Click">https://icons8.com</HyperlinkButton>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse Width="4" Height="4" Fill="Black" Margin="4"/>
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource ContentTextStyle}" VerticalAlignment="Center" TextWrapping="Wrap"
+                           Text="MVVM Base files from Pro Business Applications with Silverlight 5 by Chris Anderson (Apress, 2012): " />
+                        <HyperlinkButton VerticalAlignment="Center" Click="HyperlinkButton_Click">https://www.apress.com/us/book/9781430235002</HyperlinkButton>
+                    </StackPanel>
                 </StackPanel>
 
             </StackPanel>

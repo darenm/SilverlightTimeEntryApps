@@ -6,7 +6,7 @@
   xmlns:uriMapper="clr-namespace:System.Windows.Navigation;assembly=System.Windows.Controls.Navigation"
   xmlns:dataControls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data.DataForm.Toolkit" 
   xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-  mc:Ignorable="d" d:DesignWidth="640" d:DesignHeight="480">
+  mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="480">
 
   <Grid x:Name="LayoutRoot" Style="{StaticResource LayoutRootGridStyle}">
 
@@ -18,8 +18,9 @@
                 <navigation:Frame.UriMapper>
                   <uriMapper:UriMapper>
                     <uriMapper:UriMapping Uri="" MappedUri="/Views/Home.xaml"/>
-                    <uriMapper:UriMapping Uri="/{pageName}" MappedUri="/Views/{pageName}.xaml"/>
-                  </uriMapper:UriMapper>
+                        <uriMapper:UriMapping Uri="/AddTimeEntry/{date}" MappedUri="/Views/AddTimeEntryPage.xaml?date={date}"/>
+                        <uriMapper:UriMapping Uri="/{pageName}" MappedUri="/Views/{pageName}.xaml"/>
+                    </uriMapper:UriMapper>
                 </navigation:Frame.UriMapper>
             </navigation:Frame>
     </Border>
@@ -46,7 +47,7 @@
                         <Rectangle Style="{StaticResource DividerStyle}"/>
 
                         <HyperlinkButton x:Name="Link2" Style="{StaticResource LinkStyle}" 
-                                     NavigateUri="/TimeEntryPage" TargetName="ContentFrame" Content="{Binding Path=ApplicationStrings.TimeEntryPageTitle, Source={StaticResource ResourceWrapper}}"/>
+                                     NavigateUri="/TimeEntryPage" TargetName="ContentFrame" Content="{Binding Path=ApplicationStrings.TimeEntryNavTitle, Source={StaticResource ResourceWrapper}}"/>
 
                         <Rectangle  Style="{StaticResource DividerStyle}"/>
 

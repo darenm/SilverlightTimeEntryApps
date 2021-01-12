@@ -6,7 +6,6 @@
            mc:Ignorable="d"
            xmlns:navigation="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Navigation"
            d:DesignWidth="640" d:DesignHeight="480"
-           Title="TimeEntryPage Page" 
            xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" 
            xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit"
            xmlns:converters="clr-namespace:TimeEntryRia">
@@ -24,21 +23,23 @@
         </Grid.RowDefinitions>
         <TextBlock x:Name="HeaderText" Style="{StaticResource HeaderTextStyle}" 
                            Text="{Binding Path=ApplicationStrings.TimeEntryPageTitle, Source={StaticResource ResourceWrapper}}"/>
-        <toolkit:HeaderedContentControl Grid.Row="1" HorizontalAlignment="Left" Name="headeredContentControl1" VerticalAlignment="Top" Header="Week Starting">
+        <toolkit:HeaderedContentControl Grid.Row="1" Margin="12"
+                                        HorizontalAlignment="Left" Name="headeredContentControl1" VerticalAlignment="Top" Header="Week Starting">
             <StackPanel Orientation="Horizontal">
-                <sdk:DatePicker Height="23" Name="weekStartingDatePicker" 
+                <sdk:DatePicker Name="weekStartingDatePicker" 
                                 HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" FirstDayOfWeek="Monday" 
                                 SelectedDateChanged="weekStartingDatePicker_SelectedDateChanged" />
                 <Button x:Name="DecreaseWeek" Content="&lt;" Margin="4,0" Click="DecreaseWeek_Click" />
                 <Button x:Name="IncreaseWeek" Content="&gt;" Margin="4,0" Click="IncreaseWeek_Click" />
                 <TextBlock x:Name="WeekOfLabel" VerticalAlignment="Center" Margin="4,0" />
+                <Button x:Name="AddTimeEntryButton" Margin="8,0" Click="AddTimeEntryButton_Click">Add Time Entry</Button>
             </StackPanel>
         </toolkit:HeaderedContentControl>
 
         <sdk:DataGrid Name="WeekSummaryDataGrid" Grid.Row="2" 
                       AutoGenerateColumns="False" 
                       CanUserReorderColumns="False" 
-                      CanUserSortColumns="False" Margin="0,8">
+                      CanUserSortColumns="False" Margin="12">
             <sdk:DataGrid.Columns>
                 <sdk:DataGridTemplateColumn IsReadOnly="True">
                     <sdk:DataGridTemplateColumn.CellTemplate>

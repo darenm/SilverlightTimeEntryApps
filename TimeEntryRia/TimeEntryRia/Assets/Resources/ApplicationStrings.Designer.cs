@@ -70,6 +70,15 @@ namespace TimeEntryRia {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Time Entry.
+        /// </summary>
+        public static string AddTimeEntryPageTitle {
+            get {
+                return ResourceManager.GetString("AddTimeEntryPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Admin.
         /// </summary>
         public static string AdminPageTitle {
@@ -242,6 +251,15 @@ namespace TimeEntryRia {
         
         /// <summary>
         ///   Looks up a localized string similar to Time Entry.
+        /// </summary>
+        public static string TimeEntryNavTitle {
+            get {
+                return ResourceManager.GetString("TimeEntryNavTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weekly Summary.
         /// </summary>
         public static string TimeEntryPageTitle {
             get {

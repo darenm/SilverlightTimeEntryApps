@@ -12,17 +12,24 @@ using System.Windows.Shapes;
 using System.Windows.Navigation;
 using TimeEntryRia.Web;
 using TimeEntryRia.Services;
+using TimeEntryRia.Helpers;
 
 namespace TimeEntryRia.Views
 {
+    // An example of coding in the code-behind vs ViewModel
     public partial class TimeEntryPage : Page
     {
         TimesheetSummaryServiceClient _service;
+        DateTime? _lastSelectedDate;
+        const int FixedUserId = 53;
+        const string SelectedDateKey = "SelectedDateKey";
 
         public TimeEntryPage()
         {
-
+            this.NavigationCacheMode = System.Windows.Navigation.NavigationCacheMode.Required;
             InitializeComponent();
+            this.Title = ApplicationStrings.TimeEntryPageTitle;
+
             _service = new TimesheetSummaryServiceClient();
             _service.GetWeekSummaryCompleted += new EventHandler<GetWeekSummaryCompletedEventArgs>(service_GetWeekSummaryCompleted);
         }
@@ -42,7 +49,14 @@ namespace TimeEntryRia.Views
         // Executes when the user navigates to this page.
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            weekStartingDatePicker.SelectedDate = DateTime.Now;
+            if (_lastSelectedDate.HasValue)
+            {
+                RetrieveSummaryData(_lastSelectedDate.Value);
+            }
+            else
+            {
+                weekStartingDatePicker.SelectedDate = DateTime.Now;
+            }
         }
 
         private void weekStartingDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
@@ -50,25 +64,30 @@ namespace TimeEntryRia.Views
             if (e.AddedItems.Count > 0 && e.AddedItems[0] is DateTime)
             {
                 var selectedDate = (DateTime)e.AddedItems[0];
-                if (selectedDate.DayOfWeek == DayOfWeek.Monday)
+                if (_lastSelectedDate == selectedDate)
                 {
-                    WeekOfLabel.Text = string.Format("Week {0} of {1}", 
-                        TimeEntry.GetIso8601WeekOfYear(selectedDate),
-                        selectedDate.Year);
-                    _service.GetWeekSummaryAsync(53, selectedDate);
-
                     return;
                 }
 
-                var dayOffset = DayOfWeek.Monday - selectedDate.DayOfWeek;
-                var newDate = selectedDate + TimeSpan.FromDays(dayOffset);
-                weekStartingDatePicker.SelectedDate = newDate;
-                WeekOfLabel.Text = string.Format("Week {0} of {1}",
-                    TimeEntry.GetIso8601WeekOfYear(newDate),
-                    selectedDate.Year);
+                if (selectedDate.DayOfWeek != DayOfWeek.Monday)
+                {
+                    var dayOffset = DayOfWeek.Monday - selectedDate.DayOfWeek;
+                    selectedDate = selectedDate + TimeSpan.FromDays(dayOffset);
+                    weekStartingDatePicker.SelectedDate = selectedDate;
+                }
 
-                _service.GetWeekSummaryAsync(53, newDate);
+                _lastSelectedDate = selectedDate;
+                SettingsHelper.SaveSetting(SelectedDateKey, selectedDate);
+                RetrieveSummaryData(selectedDate);
             }
+        }
+
+        private void RetrieveSummaryData(DateTime date)
+        {
+            WeekOfLabel.Text = string.Format("Week {0} of {1}",
+                TimeEntry.GetIso8601WeekOfYear(date), date.Year);
+
+            _service.GetWeekSummaryAsync(FixedUserId, date);
         }
 
         private void DecreaseWeek_Click(object sender, RoutedEventArgs e)
@@ -81,5 +100,20 @@ namespace TimeEntryRia.Views
             weekStartingDatePicker.SelectedDate = weekStartingDatePicker.SelectedDate + TimeSpan.FromDays(7);
         }
 
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            base.OnNavigatingFrom(e);
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+        }
+
+        private void AddTimeEntryButton_Click(object sender, RoutedEventArgs e)
+        {
+            var encodeDate =  Uri.EscapeDataString(_lastSelectedDate.Value.ToShortDateString());
+            this.NavigationService.Navigate(new Uri("/AddTimeEntry/" + encodeDate, UriKind.Relative));
+        }
     }
 }

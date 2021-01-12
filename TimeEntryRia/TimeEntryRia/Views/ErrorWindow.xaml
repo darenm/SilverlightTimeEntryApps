@@ -27,7 +27,7 @@
         </StackPanel>
 
         <Button x:Name="OKButton" Grid.Row="3" Click="OKButton_Click" 
-            Width="75" Height="23" HorizontalAlignment="Right" Margin="0,10,0,0" 
+            Width="75" HorizontalAlignment="Right" Margin="0,10,0,0" 
             TabIndex="0" Content="{Binding Path=ApplicationStrings.OKButton, Source={StaticResource ResourceWrapper}}"/>
 
     </Grid>

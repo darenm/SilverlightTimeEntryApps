@@ -134,7 +134,9 @@
     <Compile Include="Helpers\BooleanConverter.cs" />
     <Compile Include="Helpers\BooleanFontWeightConverter.cs" />
     <Compile Include="Helpers\BooleanVisibilityConverter.cs" />
+    <Compile Include="Helpers\SettingsHelper.cs" />
     <Compile Include="Models\LoginInfo.cs" />
+    <Compile Include="Models\NameValuePairs.cs" />
     <Compile Include="Models\UserExtensions.cs" />
     <Compile Include="Models\RegistrationDataExtensions.cs" />
     <Compile Include="Controls\BusyIndicator.cs" />
@@ -151,10 +153,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SecurityQuestions.resx</DependentUpon>
     </Compile>
+    <Compile Include="MVVM\DelegateCommand.cs" />
+    <Compile Include="MVVM\ViewModelBase.cs" />
     <Compile Include="Service References\Services\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\AddNewTimeEntryViewModel.cs" />
+    <Compile Include="Views\AddTimeEntryPage.xaml.cs">
+      <DependentUpon>AddTimeEntryPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
@@ -224,6 +232,10 @@
     <Page Include="Controls\BusyIndicator.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AddTimeEntryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AdminPage.xaml">
       <SubType>Designer</SubType>

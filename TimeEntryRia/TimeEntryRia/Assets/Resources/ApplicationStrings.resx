@@ -185,6 +185,12 @@
     <value>Reports</value>
   </data>
   <data name="TimeEntryPageTitle" xml:space="preserve">
+    <value>Weekly Summary</value>
+  </data>
+  <data name="AddTimeEntryPageTitle" xml:space="preserve">
+    <value>Add Time Entry</value>
+  </data>
+  <data name="TimeEntryNavTitle" xml:space="preserve">
     <value>Time Entry</value>
   </data>
 </root>

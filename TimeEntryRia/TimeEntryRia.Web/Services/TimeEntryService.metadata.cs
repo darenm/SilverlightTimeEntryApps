@@ -37,13 +37,14 @@ namespace TimeEntryRia.Web
             public DateTime Date { get; set; }
 
             [Required]
+            [Range(0.5, 24.0)]
             public double Hours { get; set; }
 
             [Key]
             [Editable(false)]
             public int Id { get; set; }
 
-            [Editable(false)]
+            [Timestamp]
             public byte[] LastUpdated { get; set; }
 
             public Project Project { get; set; }
