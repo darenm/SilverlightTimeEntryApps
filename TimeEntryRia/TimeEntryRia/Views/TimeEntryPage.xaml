@@ -24,7 +24,7 @@
         <TextBlock x:Name="HeaderText" Style="{StaticResource HeaderTextStyle}" 
                            Text="{Binding Path=ApplicationStrings.TimeEntryPageTitle, Source={StaticResource ResourceWrapper}}"/>
         <toolkit:HeaderedContentControl Grid.Row="1" Margin="12"
-                                        HorizontalAlignment="Left" Name="headeredContentControl1" VerticalAlignment="Top" Header="Week Starting">
+                                        HorizontalAlignment="Left" Name="headeredContentControl1" VerticalAlignment="Top" Header="{Binding Path=ApplicationStrings.TimeEntry_WeekStarting, Source={StaticResource ResourceWrapper}}">
             <StackPanel Orientation="Horizontal">
                 <sdk:DatePicker Name="weekStartingDatePicker" 
                                 HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" FirstDayOfWeek="Monday" 
@@ -32,7 +32,7 @@
                 <Button x:Name="DecreaseWeek" Content="&lt;" Margin="4,0" Click="DecreaseWeek_Click" />
                 <Button x:Name="IncreaseWeek" Content="&gt;" Margin="4,0" Click="IncreaseWeek_Click" />
                 <TextBlock x:Name="WeekOfLabel" VerticalAlignment="Center" Margin="4,0" />
-                <Button x:Name="AddTimeEntryButton" Margin="8,0" Click="AddTimeEntryButton_Click">Add Time Entry</Button>
+                <Button x:Name="AddTimeEntryButton" Margin="8,0" Click="AddTimeEntryButton_Click" Content="{Binding Path=ApplicationStrings.TimeEntry_WeekStarting, Source={StaticResource ResourceWrapper}}" />
             </StackPanel>
         </toolkit:HeaderedContentControl>
 
@@ -52,6 +52,7 @@
                 <!-- DataGridTextColumn does not support binding to FontWeight -->
                 <!--<sdk:DataGridTextColumn Binding="{Binding MonTotal}" Header="Mon" IsReadOnly="True" FontWeight="{Binding IsTotalRow, Converter={StaticResource BooleanFontWeightConverter}}"/>-->
 
+                <!-- DataGridTextColumn does not support binding to Header for text resources -->   
                 <sdk:DataGridTemplateColumn Header="Mon" IsReadOnly="True">
                     <sdk:DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -127,7 +128,7 @@
                     <sdk:DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal">
-                                <Button Margin="4" Visibility="{Binding IsTotalRow, Converter={StaticResource InverseBooleanToVisibilityConverter}}">Edit Week</Button>
+                                <Button Margin="4" Visibility="{Binding IsTotalRow, Converter={StaticResource InverseBooleanToVisibilityConverter}}" Content="{Binding Path=ApplicationStrings.TimeEntry_EditWeek, Source={StaticResource ResourceWrapper}}"/>
                             </StackPanel>
                         </DataTemplate>
                     </sdk:DataGridTemplateColumn.CellTemplate>

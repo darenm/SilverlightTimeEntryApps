@@ -8,6 +8,7 @@
            d:DesignWidth="640" d:DesignHeight="480"
            Title="AdminPage Page">
     <Grid x:Name="LayoutRoot">
-
+        <TextBlock x:Name="HeaderText" Style="{StaticResource HeaderTextStyle}" 
+                           Text="{Binding Path=ApplicationStrings.AdminPageTitle, Source={StaticResource ResourceWrapper}}"/>
     </Grid>
 </navigation:Page>

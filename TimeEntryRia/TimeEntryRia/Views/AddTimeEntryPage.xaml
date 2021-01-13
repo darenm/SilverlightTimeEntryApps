@@ -18,22 +18,22 @@
                            Text="{Binding Path=ApplicationStrings.AddTimeEntryPageTitle, Source={StaticResource ResourceWrapper}}"/>
         <StackPanel Grid.Row="1"
                     Margin="12">
-            <toolkit:HeaderedContentControl HorizontalAlignment="Left" VerticalAlignment="Top" Header="Date">
+            <toolkit:HeaderedContentControl HorizontalAlignment="Left" VerticalAlignment="Top" Header="{Binding Path=ApplicationStrings.TimeEntry_Date, Source={StaticResource ResourceWrapper}}">
                 <sdk:DatePicker Name="TimeEntryDate" 
                                 HorizontalAlignment="Left" VerticalAlignment="Center" Width="120" FirstDayOfWeek="Monday"
                                 SelectedDate="{Binding NewTimeEntry.Date, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}"/>
             </toolkit:HeaderedContentControl>
-            <toolkit:HeaderedContentControl HorizontalAlignment="Left" VerticalAlignment="Top" Header="Project">
+            <toolkit:HeaderedContentControl HorizontalAlignment="Left" VerticalAlignment="Top" Header="{Binding Path=ApplicationStrings.TimeEntry_Project, Source={StaticResource ResourceWrapper}}">
                 <ComboBox Width="200" ItemsSource="{Binding Projects}" DisplayMemberPath="Name" SelectedValuePath="Value"
                           SelectedValue="{Binding NewTimeEntry.ProjectId, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}"/>
             </toolkit:HeaderedContentControl>
-            <toolkit:HeaderedContentControl HorizontalAlignment="Left" VerticalAlignment="Top" Header="Hours">
+            <toolkit:HeaderedContentControl HorizontalAlignment="Left" VerticalAlignment="Top" Header="{Binding Path=ApplicationStrings.TimeEntry_Hours, Source={StaticResource ResourceWrapper}}">
                 <toolkit:NumericUpDown DecimalPlaces="1" Width="200" 
                                        Value="{Binding NewTimeEntry.Hours, Mode=TwoWay, ValidatesOnExceptions=true, NotifyOnValidationError=true}" />
             </toolkit:HeaderedContentControl>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Margin="4" Command="{Binding SaveCommand}">Save</Button>
-                <Button Margin="4" Command="{Binding CancelCommand}">Cancel</Button>
+                <Button Margin="4" Command="{Binding SaveCommand}" Content="{Binding Path=ApplicationStrings.SaveButton, Source={StaticResource ResourceWrapper}}"/>
+                <Button Margin="4" Command="{Binding CancelCommand}" Content="{Binding Path=ApplicationStrings.CancelButton, Source={StaticResource ResourceWrapper}}"/>
             </StackPanel>
             <sdk:ValidationSummary DataContext="{Binding NewTimeEntry, Mode=TwoWay}"/>
 

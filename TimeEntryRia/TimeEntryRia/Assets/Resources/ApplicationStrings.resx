@@ -193,4 +193,58 @@
   <data name="TimeEntryNavTitle" xml:space="preserve">
     <value>Time Entry</value>
   </data>
+  <data name="Main_LoginRequired" xml:space="preserve">
+    <value>You must be logged in to navigate to this page.</value>
+  </data>
+  <data name="Main_RoleRequired" xml:space="preserve">
+    <value>The logged in user does not have the required role:</value>
+  </data>
+  <data name="SaveButton" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="TimeEntry_Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="TimeEntry_AddTimeEntry" xml:space="preserve">
+    <value>Add Time Entry</value>
+  </data>
+  <data name="TimeEntry_Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="TimeEntry_EditWeek" xml:space="preserve">
+    <value>Edit Week</value>
+  </data>
+  <data name="TimeEntry_FriHeader" xml:space="preserve">
+    <value>Fri</value>
+  </data>
+  <data name="TimeEntry_Hours" xml:space="preserve">
+    <value>Hours</value>
+  </data>
+  <data name="TimeEntry_MonHeader" xml:space="preserve">
+    <value>Mon</value>
+  </data>
+  <data name="TimeEntry_Project" xml:space="preserve">
+    <value>Project</value>
+  </data>
+  <data name="TimeEntry_SatHeader" xml:space="preserve">
+    <value>Sat</value>
+  </data>
+  <data name="TimeEntry_SunHeader" xml:space="preserve">
+    <value>Sun</value>
+  </data>
+  <data name="TimeEntry_ThurHeader" xml:space="preserve">
+    <value>Thu</value>
+  </data>
+  <data name="TimeEntry_Total" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="TimeEntry_TueHeader" xml:space="preserve">
+    <value>Tue</value>
+  </data>
+  <data name="TimeEntry_WedHeader" xml:space="preserve">
+    <value>Wed</value>
+  </data>
+  <data name="TimeEntry_WeekStarting" xml:space="preserve">
+    <value>Week Starting</value>
+  </data>
 </root>

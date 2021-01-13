@@ -48,6 +48,8 @@ namespace TimeEntryRia.ViewModels
         public DelegateCommand SaveCommand { get; set; }
         public DelegateCommand CancelCommand { get; set; }
 
+        public event EventHandler CloseView;
+
         public AddNewTimeEntryViewModel()
         {
             LoadProjects();
@@ -117,12 +119,19 @@ namespace TimeEntryRia.ViewModels
             }
             else
             {
-
+                if (CloseView != null)
+                {
+                    CloseView(this, EventArgs.Empty);
+                }
             }
         }
 
         private void Cancel()
         {
+            if (CloseView != null)
+            {
+                CloseView(this, EventArgs.Empty);
+            }
         }
 
 

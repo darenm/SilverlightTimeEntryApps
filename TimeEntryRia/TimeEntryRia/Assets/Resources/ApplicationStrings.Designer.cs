@@ -187,6 +187,24 @@ namespace TimeEntryRia {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You must be logged in to navigate to this page..
+        /// </summary>
+        public static string Main_LoginRequired {
+            get {
+                return ResourceManager.GetString("Main_LoginRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The logged in user does not have the required role:.
+        /// </summary>
+        public static string Main_RoleRequired {
+            get {
+                return ResourceManager.GetString("Main_RoleRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not registered yet?.
         /// </summary>
         public static string NotRegisteredYetLabel {
@@ -246,6 +264,150 @@ namespace TimeEntryRia {
         public static string ReportsPageTitle {
             get {
                 return ResourceManager.GetString("ReportsPageTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string SaveButton {
+            get {
+                return ResourceManager.GetString("SaveButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actions.
+        /// </summary>
+        public static string TimeEntry_Actions {
+            get {
+                return ResourceManager.GetString("TimeEntry_Actions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Time Entry.
+        /// </summary>
+        public static string TimeEntry_AddTimeEntry {
+            get {
+                return ResourceManager.GetString("TimeEntry_AddTimeEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        public static string TimeEntry_Date {
+            get {
+                return ResourceManager.GetString("TimeEntry_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit Week.
+        /// </summary>
+        public static string TimeEntry_EditWeek {
+            get {
+                return ResourceManager.GetString("TimeEntry_EditWeek", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fri.
+        /// </summary>
+        public static string TimeEntry_FriHeader {
+            get {
+                return ResourceManager.GetString("TimeEntry_FriHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hours.
+        /// </summary>
+        public static string TimeEntry_Hours {
+            get {
+                return ResourceManager.GetString("TimeEntry_Hours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mon.
+        /// </summary>
+        public static string TimeEntry_MonHeader {
+            get {
+                return ResourceManager.GetString("TimeEntry_MonHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project.
+        /// </summary>
+        public static string TimeEntry_Project {
+            get {
+                return ResourceManager.GetString("TimeEntry_Project", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sat.
+        /// </summary>
+        public static string TimeEntry_SatHeader {
+            get {
+                return ResourceManager.GetString("TimeEntry_SatHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sun.
+        /// </summary>
+        public static string TimeEntry_SunHeader {
+            get {
+                return ResourceManager.GetString("TimeEntry_SunHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thu.
+        /// </summary>
+        public static string TimeEntry_ThurHeader {
+            get {
+                return ResourceManager.GetString("TimeEntry_ThurHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total.
+        /// </summary>
+        public static string TimeEntry_Total {
+            get {
+                return ResourceManager.GetString("TimeEntry_Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tue.
+        /// </summary>
+        public static string TimeEntry_TueHeader {
+            get {
+                return ResourceManager.GetString("TimeEntry_TueHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wed.
+        /// </summary>
+        public static string TimeEntry_WedHeader {
+            get {
+                return ResourceManager.GetString("TimeEntry_WedHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Week Starting.
+        /// </summary>
+        public static string TimeEntry_WeekStarting {
+            get {
+                return ResourceManager.GetString("TimeEntry_WeekStarting", resourceCulture);
             }
         }
         

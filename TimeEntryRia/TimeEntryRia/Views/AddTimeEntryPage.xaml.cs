@@ -27,10 +27,20 @@ namespace TimeEntryRia.Views
         {
             var vm = new AddNewTimeEntryViewModel();
             vm.NewTimeEntry.Date = DateParam;
+            // View Model uses events to communicate with View
+            vm.CloseView += vm_CloseView;
             this.DataContext = vm;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            // Remove any hanging event subscriptions
+            ((AddNewTimeEntryViewModel)this.DataContext).CloseView -= vm_CloseView;
+
+            base.OnNavigatedFrom(e);
+        }
+
+        void vm_CloseView(object sender, EventArgs e)
         {
             this.NavigationService.GoBack();
         }

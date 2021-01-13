@@ -99,14 +99,14 @@
 
                 if (e.NavigationMode != NavigationMode.Back && !WebContext.Current.User.IsAuthenticated)
                 {
-                    ErrorWindow.CreateNew("You must be logged in to navigate to this page.", StackTracePolicy.Never);
+                    ErrorWindow.CreateNew(ApplicationStrings.Main_LoginRequired, StackTracePolicy.Never);
                     e.Cancel = true;
                 }
                 else if (e.NavigationMode != NavigationMode.Back && 
                     WebContext.Current.User.IsAuthenticated && 
                     !WebContext.Current.User.IsInRole(requiredRole))
                 {
-                    ErrorWindow.CreateNew("The logged in user does not have the required role: " + requiredRole, StackTracePolicy.Never);
+                    ErrorWindow.CreateNew(ApplicationStrings.Main_RoleRequired + requiredRole, StackTracePolicy.Never);
                     e.Cancel = true;
                 }
             }
