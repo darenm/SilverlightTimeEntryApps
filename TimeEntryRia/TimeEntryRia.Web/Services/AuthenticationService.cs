@@ -11,6 +11,7 @@
     using System.Text;
     using System;
     using System.Collections.Generic;
+    using TimeEntryRia.Web.Models;
 
     /// <summary>
     /// RIA Services DomainService responsible for authenticating users when
@@ -72,8 +73,30 @@
                 Name = timeEntryUser.UserName,
                 FriendlyName = timeEntryUser.DisplayName,
                 Id = timeEntryUser.Id,
-                Roles = new List<string>() { timeEntryUser.Role.Name }
             };
+
+            var roles = new List<string>();
+            switch (timeEntryUser.Role.Name)
+            {
+                case TimeEntryRoles.Admin:
+                    roles.Add(TimeEntryRoles.Admin);
+                    roles.Add(TimeEntryRoles.Consultant);
+                    break;
+
+                case TimeEntryRoles.Consultant:
+                    roles.Add(TimeEntryRoles.Consultant);
+                    roles.Add(TimeEntryRoles.ReportViewer);
+                    break;
+
+                case TimeEntryRoles.ReportViewer:
+                    roles.Add(TimeEntryRoles.ReportViewer);
+                    break;
+                default:
+                    break;
+            }
+
+            user.Roles = roles;
+
 
             return user;
         }

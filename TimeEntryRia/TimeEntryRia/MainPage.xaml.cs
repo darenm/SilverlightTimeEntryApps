@@ -6,6 +6,7 @@
     using System.Windows.Controls;
     using System.Windows.Navigation;
     using TimeEntryRia.LoginUI;
+    using TimeEntryRia.Web;
 
     /// <summary>
     /// <see cref="UserControl"/> class providing the main UI for the application.
@@ -83,15 +84,29 @@
             }
         }
 
-        private List<string> _secureViews = new List<string> { "/TimeEntryPage", "/NewTimeEntryPage", "/ReportsPage", "/AdminPage" };
+        private Dictionary<string, string> _secureViews = new Dictionary<string, string> { 
+            {"/TimeEntryPage", TimeEntryRoles.Consultant},
+            { "/NewTimeEntryPage", TimeEntryRoles.Consultant}, 
+            {"/ReportsPage",  TimeEntryRoles.ReportViewer}, 
+            {"/AdminPage", TimeEntryRoles.Admin }
+        };
 
         private void ContentFrame_Navigating(object sender, NavigatingCancelEventArgs e)
         {
-            if (_secureViews.Contains(e.Uri.OriginalString))
+            if (_secureViews.ContainsKey(e.Uri.OriginalString))
             {
-                if (e.NavigationMode != NavigationMode.Back && !WebContext.Current.Authentication.User.Identity.IsAuthenticated)
+                var requiredRole = _secureViews[e.Uri.OriginalString];
+
+                if (e.NavigationMode != NavigationMode.Back && !WebContext.Current.User.IsAuthenticated)
                 {
                     ErrorWindow.CreateNew("You must be logged in to navigate to this page.", StackTracePolicy.Never);
+                    e.Cancel = true;
+                }
+                else if (e.NavigationMode != NavigationMode.Back && 
+                    WebContext.Current.User.IsAuthenticated && 
+                    !WebContext.Current.User.IsInRole(requiredRole))
+                {
+                    ErrorWindow.CreateNew("The logged in user does not have the required role: " + requiredRole, StackTracePolicy.Never);
                     e.Cancel = true;
                 }
             }

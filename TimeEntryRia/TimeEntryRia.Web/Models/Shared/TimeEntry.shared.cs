@@ -49,4 +49,11 @@ namespace TimeEntryRia.Web
             return result.AddDays(-3);
         }
     }
+
+    public partial class TimeEntryRoles
+    {
+        public const string Admin = "Admin";
+        public const string Consultant = "Consultant";
+        public const string ReportViewer = "ReportViewer";
+    }
 }
