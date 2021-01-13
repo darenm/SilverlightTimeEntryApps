@@ -19,6 +19,7 @@ namespace TimeEntryRia.Web.Services
     // Also consider adding roles to restrict access as appropriate.
     // [RequiresAuthentication]
     [EnableClientAccess()]
+    [RequiresAuthentication]
     public class TimeEntryService : LinqToEntitiesDomainService<TimeEntryEntities>
     {
 

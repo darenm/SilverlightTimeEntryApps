@@ -44,7 +44,6 @@ namespace TimeEntryRia.Web
             [Editable(false)]
             public int Id { get; set; }
 
-            [Timestamp]
             public byte[] LastUpdated { get; set; }
 
             public Project Project { get; set; }

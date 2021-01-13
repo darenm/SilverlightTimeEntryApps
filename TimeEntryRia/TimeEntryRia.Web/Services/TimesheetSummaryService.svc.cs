@@ -5,6 +5,10 @@ using System.ServiceModel;
 using System.ServiceModel.Activation;
 using TimeEntryRia.Web.Models;
 using System.Collections.Generic;
+using System.ServiceModel.DomainServices.Server;
+using System.Security.Permissions;
+using System.Threading;
+using System.Web;
 
 namespace TimeEntryRia.Web.Services
 {
@@ -13,7 +17,13 @@ namespace TimeEntryRia.Web.Services
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class TimesheetSummaryService
     {
+        public TimesheetSummaryService()
+        {
+            Thread.CurrentPrincipal = HttpContext.Current.User;
+        }
+
         [OperationContract]
+        [PrincipalPermission(SecurityAction.Demand, Authenticated=true)]
         public IEnumerable<SummaryRow> GetWeekSummary(int userId, DateTime weekStartDate)
         {
             var context = new TimeEntryEntities();

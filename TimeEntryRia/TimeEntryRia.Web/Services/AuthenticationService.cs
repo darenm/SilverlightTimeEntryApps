@@ -71,6 +71,7 @@
             {
                 Name = timeEntryUser.UserName,
                 FriendlyName = timeEntryUser.DisplayName,
+                Id = timeEntryUser.Id,
                 Roles = new List<string>() { timeEntryUser.Role.Name }
             };
 

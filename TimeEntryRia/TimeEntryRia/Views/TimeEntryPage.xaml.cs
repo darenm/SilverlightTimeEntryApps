@@ -21,17 +21,17 @@ namespace TimeEntryRia.Views
     {
         TimesheetSummaryServiceClient _service;
         DateTime? _lastSelectedDate;
-        const int FixedUserId = 53;
         const string SelectedDateKey = "SelectedDateKey";
 
         public TimeEntryPage()
         {
-            this.NavigationCacheMode = System.Windows.Navigation.NavigationCacheMode.Required;
+            //this.NavigationCacheMode = System.Windows.Navigation.NavigationCacheMode.Required;
             InitializeComponent();
             this.Title = ApplicationStrings.TimeEntryPageTitle;
 
             _service = new TimesheetSummaryServiceClient();
             _service.GetWeekSummaryCompleted += new EventHandler<GetWeekSummaryCompletedEventArgs>(service_GetWeekSummaryCompleted);
+
         }
 
         void service_GetWeekSummaryCompleted(object sender, GetWeekSummaryCompletedEventArgs e)
@@ -49,6 +49,11 @@ namespace TimeEntryRia.Views
         // Executes when the user navigates to this page.
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            if (!WebContext.Current.Authentication.User.Identity.IsAuthenticated)
+            {
+                return;
+            }
+
             if (_lastSelectedDate.HasValue)
             {
                 RetrieveSummaryData(_lastSelectedDate.Value);
@@ -87,7 +92,8 @@ namespace TimeEntryRia.Views
             WeekOfLabel.Text = string.Format("Week {0} of {1}",
                 TimeEntry.GetIso8601WeekOfYear(date), date.Year);
 
-            _service.GetWeekSummaryAsync(FixedUserId, date);
+            var user = WebContext.Current.User;
+            _service.GetWeekSummaryAsync(user.Id, date);
         }
 
         private void DecreaseWeek_Click(object sender, RoutedEventArgs e)
@@ -98,16 +104,6 @@ namespace TimeEntryRia.Views
         private void IncreaseWeek_Click(object sender, RoutedEventArgs e)
         {
             weekStartingDatePicker.SelectedDate = weekStartingDatePicker.SelectedDate + TimeSpan.FromDays(7);
-        }
-
-        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
-        {
-            base.OnNavigatingFrom(e);
-        }
-
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
-        {
-            base.OnNavigatedFrom(e);
         }
 
         private void AddTimeEntryButton_Click(object sender, RoutedEventArgs e)

@@ -1,5 +1,7 @@
 ﻿namespace TimeEntryRia
 {
+    using System.Collections.Generic;
+    using System.Threading;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Navigation;
@@ -10,6 +12,9 @@
     /// </summary>
     public partial class MainPage : UserControl
     {
+        private bool _rollBackNav = false;
+        private bool _errorWhileRollback = false;
+
         /// <summary>
         /// Creates a new <see cref="MainPage"/> instance.
         /// </summary>
@@ -17,6 +22,26 @@
         {
             InitializeComponent();
             this.loginContainer.Child = new LoginStatus();
+
+            WebContext.Current.Authentication.LoggedOut += (s, e) =>
+            {
+                // this works around an issue wher the CanGoBack flag is not updated
+                // quickly enough so another GoBack is issued, causing exceptions.
+                try
+                {
+                    _rollBackNav = true;
+                    while (ContentFrame.CanGoBack && !_errorWhileRollback)
+                    {
+                        ContentFrame.GoBack();
+                    }
+                }
+                finally
+                {
+                    _rollBackNav = false;
+                    _errorWhileRollback = false;
+                }
+            };
+
         }
 
         /// <summary>
@@ -47,7 +72,29 @@
         private void ContentFrame_NavigationFailed(object sender, NavigationFailedEventArgs e)
         {
             e.Handled = true;
-            ErrorWindow.CreateNew(e.Exception);
+
+            if (_rollBackNav)
+            {
+                _errorWhileRollback = true;
+            }
+            else
+            {
+                ErrorWindow.CreateNew(e.Exception);
+            }
+        }
+
+        private List<string> _secureViews = new List<string> { "/TimeEntryPage", "/NewTimeEntryPage", "/ReportsPage", "/AdminPage" };
+
+        private void ContentFrame_Navigating(object sender, NavigatingCancelEventArgs e)
+        {
+            if (_secureViews.Contains(e.Uri.OriginalString))
+            {
+                if (e.NavigationMode != NavigationMode.Back && !WebContext.Current.Authentication.User.Identity.IsAuthenticated)
+                {
+                    ErrorWindow.CreateNew("You must be logged in to navigate to this page.", StackTracePolicy.Never);
+                    e.Cancel = true;
+                }
+            }
         }
     }
 }

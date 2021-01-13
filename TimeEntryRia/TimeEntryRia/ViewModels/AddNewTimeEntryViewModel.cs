@@ -52,8 +52,10 @@ namespace TimeEntryRia.ViewModels
         {
             LoadProjects();
 
-            //_newTimeEntry = new TimeEntry() { LastUpdated = BitConverter.GetBytes(-1) };
-            _newTimeEntry = new TimeEntry();
+            _newTimeEntry = new TimeEntry()
+            {
+                UserId = WebContext.Current.User.Id
+            };
             _newTimeEntry.PropertyChanged += (s, e) => SaveCommand.CanExecute(null);
 
             SaveCommand = new DelegateCommand(o => this.Save(), o => this.IsTimeEntryValid());

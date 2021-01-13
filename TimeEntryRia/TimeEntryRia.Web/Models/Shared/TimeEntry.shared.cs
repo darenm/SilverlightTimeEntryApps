@@ -47,6 +47,6 @@ namespace TimeEntryRia.Web
 
             // Subtract 3 days from Thursday to get Monday, which is the first weekday in ISO8601
             return result.AddDays(-3);
-        } 
+        }
     }
 }
