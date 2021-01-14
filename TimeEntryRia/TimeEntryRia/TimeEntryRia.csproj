@@ -102,6 +102,7 @@
     </Reference>
     <Reference Include="System.Windows.Controls.Theming.Toolkit, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Windows.Controls.Toolkit, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Data, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Windows.Interactivity, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Windows.Browser" />
@@ -288,6 +289,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\DataSources\TimeEntryRia.Web.Services.ProjectContext.datasource" />
+    <None Include="Properties\DataSources\TimeEntryRia.Web.Services.TimeEntryContext.datasource" />
+    <None Include="Properties\DataSources\TimeEntryRia.Web.UserRegistrationContext.datasource" />
     <None Include="Service References\Services\TimeEntryRia.Services.SummaryRow.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
