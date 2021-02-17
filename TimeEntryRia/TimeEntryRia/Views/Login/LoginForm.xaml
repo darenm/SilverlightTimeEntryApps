@@ -32,10 +32,5 @@
             <Button x:Name="loginButton" Content="{Binding Path=ApplicationStrings.OKButton, Source={StaticResource ResourceWrapper}}" Click="LoginButton_Click" Style="{StaticResource RegisterLoginButtonStyle}" IsEnabled="{Binding Path=CanLogIn}" />
             <Button x:Name="loginCancel" Content="{Binding Path=ApplicationStrings.CancelButton, Source={StaticResource ResourceWrapper}}" Click="CancelButton_Click" Style="{StaticResource RegisterLoginButtonStyle}" />
         </StackPanel>
-
-        <!--<StackPanel Grid.Row="1" Grid.Column="0" Style="{StaticResource RegisterLoginLinkPanelStyle}">
-            <TextBlock Text="{Binding Path=ApplicationStrings.NotRegisteredYetLabel, Source={StaticResource ResourceWrapper}}" Style="{StaticResource CommentStyle}"/>
-            <HyperlinkButton x:Name="registerNow" Content="{Binding Path=ApplicationStrings.RegisterNowButton, Source={StaticResource ResourceWrapper}}" Click="RegisterNow_Click" IsEnabled="{Binding IsLoggingIn, Converter={StaticResource NotOperatorValueConverter}}" />
-        </StackPanel>-->
     </Grid>
 </StackPanel>

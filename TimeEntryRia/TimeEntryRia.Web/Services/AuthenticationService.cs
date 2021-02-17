@@ -97,7 +97,6 @@
 
             user.Roles = roles;
 
-
             return user;
         }
 

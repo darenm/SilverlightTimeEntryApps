@@ -252,6 +252,8 @@
                         <dataPrimitives:DataGridCellsPresenter x:Name="CellsPresenter" Grid.Column="1" dataPrimitives:DataGridFrozenGrid.IsFrozen="True"/>
                         <dataPrimitives:DataGridDetailsPresenter x:Name="DetailsPresenter" Grid.Column="1" Grid.Row="1"/>
                         <Rectangle x:Name="BottomGridLine" Grid.Column="1" HorizontalAlignment="Stretch" Height="1" Grid.Row="2"/>
+                        <Rectangle x:Name="InvalidVisualElement" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" IsHitTestVisible="False" Opacity="0" Stroke="{StaticResource ControlsValidationBrush}" StrokeThickness="1" VerticalAlignment="Stretch"/>
+
                     </dataPrimitives:DataGridFrozenGrid>
                 </ControlTemplate>
             </Setter.Value>

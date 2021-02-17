@@ -32,7 +32,7 @@
                 <Button x:Name="DecreaseWeek" Content="&lt;" Margin="4,0" Click="DecreaseWeek_Click" />
                 <Button x:Name="IncreaseWeek" Content="&gt;" Margin="4,0" Click="IncreaseWeek_Click" />
                 <TextBlock x:Name="WeekOfLabel" VerticalAlignment="Center" Margin="4,0" />
-                <Button x:Name="AddTimeEntryButton" Margin="8,0" Click="AddTimeEntryButton_Click" Content="{Binding Path=ApplicationStrings.TimeEntry_WeekStarting, Source={StaticResource ResourceWrapper}}" />
+                <Button x:Name="AddTimeEntryButton" Margin="8,0" Click="AddTimeEntryButton_Click" Content="{Binding Path=ApplicationStrings.TimeEntry_AddTimeEntry, Source={StaticResource ResourceWrapper}}" />
             </StackPanel>
         </toolkit:HeaderedContentControl>
 

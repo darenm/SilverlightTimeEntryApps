@@ -141,6 +141,7 @@
     <Compile Include="Helpers\SettingsHelper.cs" />
     <Compile Include="Models\LoginInfo.cs" />
     <Compile Include="Models\NameValuePairs.cs" />
+    <Compile Include="Models\Project.partial.cs" />
     <Compile Include="Models\TimeEntry.partial.cs" />
     <Compile Include="Models\UserExtensions.cs" />
     <Compile Include="Models\RegistrationDataExtensions.cs" />

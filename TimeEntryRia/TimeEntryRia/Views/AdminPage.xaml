@@ -12,8 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition  Height="Auto"/>
-            <RowDefinition  Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock x:Name="HeaderText" Style="{StaticResource HeaderTextStyle}" 
 			Text="{Binding ApplicationStrings.AdminPageTitle, Source={StaticResource ResourceWrapper}}"/>
@@ -23,22 +22,21 @@
             <riaControls:DomainDataSource.DomainContext>
                 <Services:ProjectContext/>
             </riaControls:DomainDataSource.DomainContext>
+            <!-- https://stackoverflow.com/questions/226433/set-initial-sort-order-in-silverlight-datagrid -->
             <riaControls:DomainDataSource.SortDescriptors>
                 <riaControls:SortDescriptor PropertyPath="Id" Direction="Ascending" />
             </riaControls:DomainDataSource.SortDescriptors>
         </riaControls:DomainDataSource>
-        <sdk:DataPager Grid.Row="1" Source="{Binding Data, ElementName=projectDomainDataSource}" PageSize="10"/>
+        <sdk:DataPager x:Name="projectPager" Grid.Row="1" Source="{Binding Data, ElementName=projectDomainDataSource}" PageSize="10"/>
+        <Button x:Name="AddRow" Content="Add" Grid.Row="1" HorizontalAlignment="Left" Margin="4" Click="AddRow_Click"/>
         <sdk:DataGrid x:Name="projectDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Data, ElementName=projectDomainDataSource}" 
-                      Grid.Row="2" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserSortColumns="True" CanUserReorderColumns="False">
+                      Grid.Row="2"
+                      RowDetailsVisibilityMode="VisibleWhenSelected" CanUserSortColumns="True" CanUserReorderColumns="False">
             <sdk:DataGrid.Columns>
                 <sdk:DataGridTextColumn x:Name="idColumn" CanUserSort="True" Binding="{Binding Id, Mode=OneWay}" Header="Project ID" IsReadOnly="True" Width="SizeToHeader"/>
                 <sdk:DataGridTextColumn x:Name="nameColumn" Binding="{Binding Name}" Header="Project Name"/>
             </sdk:DataGrid.Columns>
         </sdk:DataGrid>
-        <!--<ScrollViewer Grid.Row="1" x:Name="PageScrollViewer" Style="{StaticResource PageScrollViewerStyle}">
-
-
-        </ScrollViewer>-->
     </Grid>
 
 </navigation:Page>

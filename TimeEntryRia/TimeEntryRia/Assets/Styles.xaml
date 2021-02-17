@@ -347,7 +347,7 @@
         <Setter Property="FontWeight" Value="SemiBold"/>
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
-        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="Margin" Value="0,2,0,0"/>
     </Style>
 
@@ -1756,8 +1756,6 @@
     </Style>
     
     <!-- Custom Styles for TimeEntryRia -->
-    
-    <SolidColorBrush x:Key="ContentPanelBackgroundBrush" Color="#FFEEEEEE"/>
 
     <Style x:Key="ContentPanelBackground" TargetType="Rectangle">
         <Setter Property="RadiusX" Value="8"/>

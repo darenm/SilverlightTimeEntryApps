@@ -70,6 +70,15 @@ namespace TimeEntryRia {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        public static string AddButton {
+            get {
+                return ResourceManager.GetString("AddButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Time Entry.
         /// </summary>
         public static string AddTimeEntryPageTitle {

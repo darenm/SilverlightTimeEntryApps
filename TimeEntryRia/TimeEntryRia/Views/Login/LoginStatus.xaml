@@ -63,8 +63,7 @@
             <TextBlock Text="  |  " Style="{StaticResource SpacerStyle}"/>
             <Button x:Name="logoutButton" Content="{Binding Path=ApplicationStrings.LogOffButton, Source={StaticResource ResourceWrapper}}" 
                                     Click="LogoutButton_Click" 
-                                    Style="{StaticResource LoginRegisterLinkStyle}" 
-                                    IsEnabled="{Binding Path=Authentication.IsLoggingOut, Converter={StaticResource NotOperatorValueConverter}}" />
+                                    Style="{StaticResource LoginRegisterLinkStyle}" />
         </StackPanel>
     </Grid>
 

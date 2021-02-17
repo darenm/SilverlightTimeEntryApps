@@ -261,6 +261,9 @@
     <!-- Brushes Stop -->
 
 
+    <SolidColorBrush x:Key="ContentPanelBackgroundBrush" Color="{StaticResource Gray1}"/>
+
+
     <!-- Brushes End -->
 </ResourceDictionary>
 

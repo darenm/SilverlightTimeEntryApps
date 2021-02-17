@@ -22,6 +22,7 @@ namespace TimeEntryRia.Views
         TimesheetSummaryServiceClient _service;
         DateTime? _lastSelectedDate;
         const string SelectedDateKey = "SelectedDateKey";
+        private TimeEntryRia.Controls.BusyIndicator _busyIndicator;
 
         public TimeEntryPage()
         {
@@ -31,18 +32,26 @@ namespace TimeEntryRia.Views
 
             _service = new TimesheetSummaryServiceClient();
             _service.GetWeekSummaryCompleted += new EventHandler<GetWeekSummaryCompletedEventArgs>(service_GetWeekSummaryCompleted);
-
+            _busyIndicator = Application.Current.RootVisual as TimeEntryRia.Controls.BusyIndicator;
         }
 
         void service_GetWeekSummaryCompleted(object sender, GetWeekSummaryCompletedEventArgs e)
         {
-            if (!e.Cancelled && e.Error == null)
+            try
             {
-                WeekSummaryDataGrid.ItemsSource = e.Result;
+                if (!e.Cancelled && e.Error == null)
+                {
+                    WeekSummaryDataGrid.ItemsSource = e.Result;
+                }
+                else
+                {
+                    _busyIndicator.IsBusy = false;
+                    MessageBox.Show(e.Error.Message);
+                }
             }
-            else
+            finally
             {
-                MessageBox.Show(e.Error.Message);
+                _busyIndicator.IsBusy = false;
             }
         }
 
@@ -89,6 +98,7 @@ namespace TimeEntryRia.Views
 
         private void RetrieveSummaryData(DateTime date)
         {
+            _busyIndicator.IsBusy = true;
             WeekOfLabel.Text = string.Format("Week {0} of {1}",
                 TimeEntry.GetIso8601WeekOfYear(date), date.Year);
 
